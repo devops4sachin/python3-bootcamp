@@ -1,0 +1,268 @@
+######## LISTS ########
+
+- It's just a collection or grouping of items!
+
+- Not necessary a list of homogenous items.
+
+	>>> demo_list = ["a", 1, 45, True, 6.777]
+	>>> demo_list
+	['a', 1, 45, True, 6.777]
+
+- Length of List
+	
+	>>> len(demo_list)
+	5
+
+- Converting a variable to List, using BIF list()
+
+	>>> r = range(1,10)
+	>>> r
+	range(1, 10)
+	>>> list(r)
+	[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+- Accessing Data in Lists
+
+	>>> colors[0]
+	'red'
+	>>> colors[-1]
+	'blue'
+	>>> colors[-2]
+	'yellow'
+
+- Checking if element is present in Lists
+
+	>>> "blue" in colors
+	True
+	>>> 
+	>>> "white" in colors
+	False
+	>>> if "red" in colors:
+	...     print ("red is present")
+	... 
+	red is present
+
+
+- Iterating over Lists
+>>> numbers = [1, 2, 3, 4, 5]
+>>> for num in numbers:
+...     print(num*2)
+... 
+2
+4
+6
+8
+10
+
+
+>>> i = 0
+>>> while i < len(numbers):
+...     print(numbers[i])
+...     i += 1
+... 
+1
+2
+3
+4
+5
+
+
+- List methods : Append, Insert, Extend
+	- Appending at end.
+		>>> data = [1, 2, 3]
+		>>> data
+		[1, 2, 3]
+		>>> data.append("purple")
+		>>> data
+		[1, 2, 3, 'purple']
+		>>> 
+	- Appending multiple elements.
+		>>> data.extend([3, "red", 4])
+		>>> data
+		[1, 2, 3, 'purple', 3, 'red', 4]
+		>>> print(data)
+		[1, 2, 3, 'purple', 3, 'red', 4]
+		>>> 
+	- Insering at index.
+		>>> data.insert(2, "Hi")
+		>>> data
+		[1, 2, 'Hi', 3, 'purple', 3, 'red', 4]
+	- This doesn't add at the end
+		>>> data.insert(-1, "The end!")
+		>>> data
+		[1, 2, 'Hi', 3, 'purple', 3, 'red', 'The end!', 4]
+		>>> 
+
+
+- Lists methods : Clear, Pop, Remove
+
+	- POP
+
+		>>> data
+		[1, 2, 'Hi', 3, 'purple', 3, 'red', 'The end!', 4]
+		>>> data.pop(3)
+		3
+		>>> data
+		[1, 2, 'Hi', 'purple', 3, 'red', 'The end!', 4]
+		>>> data.pop()
+		4
+		>>> data
+		[1, 2, 'Hi', 'purple', 3, 'red', 'The end!']
+
+	- Remove
+		- Remove's the item whole value is "x". It does not return's the item that is removed.
+
+		>>> data
+		[1, 2, 'Hi', 'purple', 3, 'red', 'The end!']
+		>>> 
+		>>> data.remove('purple')
+		>>> data
+		[1, 2, 'Hi', 3, 'red', 'The end!']
+		>>> 
+		>>> data.remove(3)
+		>>> data
+		[1, 2, 'Hi', 'red', 'The end!']
+
+
+	- Clear
+		- It clears the whole list.
+
+		>>> data.clear()
+		>>> data
+		[]
+
+
+
+- Lists methods : Index, Count, Sort, Reverse and Join
+
+	- index : It provides you with the index of the element.
+		>>> names = ["colt", "blue", "arya", "lena", "colt", "selena", "pablo"]
+		>>> names
+		['colt', 'blue', 'arya', 'lena', 'colt', 'selena', 'pablo']
+		>>> names.index("colt")
+		0
+		>>> names.index("colt", 1)
+		4
+
+
+
+	- count : Number of times element occurs in a List.
+		>>> names.count("colt")
+		2
+		>>> names.count("selena")
+				1
+
+	- sort : It sorts elements, it modifies the lists.
+		>>> names
+		['pablo', 'selena', 'colt', 'lena', 'arya', 'blue', 'colt']
+		>>> names.sort()
+		>>> names
+		['arya', 'blue', 'colt', 'colt', 'lena', 'pablo', 'selena']
+		>>> names.append('ARYA')
+		>>> names
+		['arya', 'blue', 'colt', 'colt', 'lena', 'pablo', 'selena', 'ARYA']
+		>>> names.sort()
+		>>> names
+		['ARYA', 'arya', 'blue', 'colt', 'colt', 'lena', 'pablo', 'selena']
+
+	- reverse : It reverses the elements of the lists. It modifies the list.
+		>>> names
+		['colt', 'blue', 'arya', 'lena', 'colt', 'selena', 'pablo']
+		>>> names.reverse()
+		>>> names
+		['pablo', 'selena', 'colt', 'lena', 'arya', 'blue', 'colt']
+
+	- join : Used to convert List to String using the " ".
+				>>> words = ["Coding", "is", "Fun"]
+				>>> words
+				['Coding', 'is', 'Fun']
+				>>> " ".join(words)
+				'Coding is Fun'
+				>>> 
+				>>> str = " ".join(words)
+				>>> str
+				'Coding is Fun'
+
+
+- Slices :
+	
+	- It slices the Lists elements. For slices we specify 3 peices of information.
+
+		some_list[start:end:step], start and end are the INDEXES.
+
+    - With the first index value only.
+
+			>>> colors
+			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+			>>> 
+			>>> colors[2:]
+			['yellow', 'green', 'blue', 'indigo', 'violet']
+			>>> 
+			>>> colors[0:]
+			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+			>>> 
+			>>> colors2 = colors[:]
+			>>> 
+			>>> colors2
+			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+			>>> 
+			>>> colors2 is colors
+			False
+			>>> 
+			>>> colors[-2:]
+			['indigo', 'violet']
+
+
+   - With first/second index value.
+
+			>>> colors
+			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+			>>> 
+			>>> colors[2:]
+			['yellow', 'green', 'blue', 'indigo', 'violet']
+			>>> 
+			>>> colors[0:]
+			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+			>>> 
+			>>> colors2 = colors[:]
+			>>> 
+			>>> colors2
+			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+			>>> 
+			>>> colors2 is colors
+			False
+			>>> 
+			>>> colors[-2:]
+			['indigo', 'violet']
+
+
+    - With first/second/step value.
+
+			>>> colors[0:6:2]
+			['red', 'yellow', 'blue']
+			>>> 
+			>>> colors[0::3]
+			['red', 'green', 'violet']
+			>>> 
+			>>> reverse_colors = colors[5::-1]
+			>>> reverse_colors
+			['indigo', 'blue', 'green', 'yellow', 'orange', 'red']
+			>>> 
+
+   - Adding many values.
+
+			>>> numbers
+			[1, 2, 3, 4, 5]
+			>>> numbers[1:3] = ['a', 'b', 'c']
+			>>> 
+			>>> numbers
+			[1, 'a', 'b', 'c', 4, 5]
+
+
+	- Swapping Values. It can be used for operations like shuffling, sorting.
+
+			>>> names = ["sachin", "chimbu"]
+			>>> names[0], names[1] = names[1], names[0]
+			>>> names
+			['chimbu', 'sachin']

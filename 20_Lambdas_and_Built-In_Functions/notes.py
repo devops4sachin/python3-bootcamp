@@ -1,0 +1,476 @@
+#################### Lambdas and Built-in Functions #####################
+
+###### 1 : Lambdas
+	
+		- Its very similar to Anonymous functions. Writing a one line of functions.
+		
+			>>> def square(num): return num * num
+			
+			>>> ##### Here is lambda function #####
+			>>> square2 = lambda num: num * num
+			>>> 
+			>>> add = lambda a, b: a + b			#### a, b are the paramters and the return value is "a + b"
+			>>> 
+			>>> print(square2(7))
+			49
+			>>> 
+			>>> print(add(3,10))
+			13
+			>>> 
+			>>> print(square.__name__)
+			square
+			>>> print(square2.__name__)
+			<lambda>
+			>>> print(add.__name__)
+			<lambda>
+			>>>
+			
+		- When to use lambda : When you have to some code where you have to pass the function as a parameter where that function is never used again.
+		
+		- Example :
+
+				# Don't need this function if we use a lambda 
+				# def say_hi():
+				#     print("HELLO!")
+				
+				button = tk.Button(frame, 
+								text="CLICK ME", 
+								fg="red",
+								command=lambda: print("Hello"))
+
+								
+								
+###### 2 : MAP - BIF
+
+		- A standard function that accepts at least 2 arguments, a function and an "iterable".
+			- iterable : something that can be iterated over (lists, strings, dictionaries, sets, tuples)
+		- It maps a function to each elements of a iterable.
+			
+		- Run the lambda for each value in the iterable and returns a map object which can be converted into another data structure.
+		
+				>>> nums = [1,2,3,4,5]
+				>>> nums
+				[1, 2, 3, 4, 5]
+				>>> doubles = map(lambda x: x*2, nums)
+				>>> doubles
+				<map object at 0x000002043DCCB588>
+				>>> for num in doubles:
+					print(num)
+				
+					
+				2
+				4
+				6
+				8
+				10
+				>>> 
+				>>> list(doubles)		## The map is returned only once, thus you we will have to invoke it again.
+				[]
+				>>> doubles = map(lambda x: x*2, nums)
+				>>> list(doubles)
+				[2, 4, 6, 8, 10]
+				>>> 
+
+		- Another example.
+
+				>>> people = ["Darcy", "Christina", "Dana", "Annabel"]
+				>>> peeps = map( lambda name: name.upper(), people)
+				>>> list(peeps)
+				['DARCY', 'CHRISTINA', 'DANA', 'ANNABEL']
+
+		- Another example.
+				>>> names = [
+					{'first':'Rusty', 'last':'Steele'},
+					{'first':'Sachin', 'last':'Kesarkar'},
+					{'first':'Chimbu', 'last':'Kesarkar'}
+					]
+					
+				>>> names
+					
+				[{'first': 'Rusty', 'last': 'Steele'}, {'first': 'Sachin', 'last': 'Kesarkar'}, {'first': 'Chimbu', 'last': 'Kesarkar'}]
+				>>> first_names_upper = list(map(lambda x: x['first'].upper(), names))
+					
+				>>> print(first_names_upper)
+					
+				['RUSTY', 'SACHIN', 'CHIMBU']
+				>>> 
+				
+				
+				
+				
+###### 3 : Filters
+
+		- There is a lambda for each value in iterable.
+		- Returns filter object which can be converted into other iterables.
+		- The object contains only the values that return True to the lambda.
+		
+		- Example :
+		
+			>>> l = [1,2,3,4,5,6,7,8,9,10]
+			>>> evens = list(filter(lambda x:x%2 == 0,l))
+			>>> evens
+			[2, 4, 6, 8, 10]
+			
+		- Another example.
+		
+			>>> # Get the list of names starting with character 'a'
+			>>> names = ['austin', 'penny', 'anthony', 'angel', 'billy']
+			>>> names
+			['austin', 'penny', 'anthony', 'angel', 'billy']
+			>>> a_names = filter( lambda a: a[0] == 'a', names)
+			>>> list(a_names)
+			['austin', 'anthony', 'angel']
+			>>> 
+		
+		- Another example.
+		
+			users = [
+				{"username": "samuel", "tweets": ["I love cake", "I love pie", "hello world!"]},
+				{"username": "katie", "tweets": ["I love my cat"]},
+				{"username": "jeff", "tweets": []},
+				{"username": "bob123", "tweets": []},
+				{"username": "doggo_luvr", "tweets": ["dogs are the best", "I'm hungry"]},
+				{"username": "guitar_gal", "tweets": []}
+			]
+			
+			- extract inactive users using filter:
+				inactive_users = list(filter(lambda u: not u['tweets'], users))
+				>>> list(inactive_users)
+				[{'username': 'jeff', 'tweets': []}, {'username': 'bob123', 'tweets': []}, {'username': 'guitar_gal', 'tweets': []}]
+
+			- extract inactive users using list comprehension:
+				>>>inactive_users2= [user for user in users if not user["tweets"]]
+
+
+			- extract inactive users who's name length is less than 5:
+				>>> usernames = list(map(lambda name: f'Inactive user with name less than 5 chars : {name["username"]}', filter(lambda value: len(value["username"]) < 5, users)))
+				>>> list(usernames)
+				['Inactive user with name less than 5 chars : jeff']
+
+			- extract usernames of inactive users w/ map and filter and show them in upper case:
+				>>>usernames = list(map(lambda user: user["username"].upper(), 
+					filter(lambda u: not u['tweets'], users)))
+				>>> usernames
+				['JEFF', 'BOB123', 'GUITAR_GAL']
+
+
+			- The above operation can be simple done with List comprehension as below.
+			- In python mostly List comprehension are used, where map and lambda is mostly used in the JavaScript language.
+			- The above examples were for just illustration purpose.
+
+			- extract usernames of inactive users w/ list comprehension
+				>>>usernames2 = [user["username"].upper() for user in users if not user["tweets"]]
+
+				
+				
+###### 4 : Any and all
+
+	- all : Return TRUE if all elements of the iterable are truthy (or if iterable is empty).
+
+	- example : if a string 'eio' contains only vowels.
+	
+			>>> [char in 'aeiou' for char in 'eio']
+			[True, True, True]
+			>>> all([ char in 'aeiou' for char in 'eio'])
+			True
+				- example : if all num's are divisible by 2.
+			>>> all([num%2 == 0 for num in [4,2,10,6,8]])
+			True
+			>>> [num%2 == 0 for num in [4,2,10,6,8]]
+			[True, True, True, True, True]
+	
+	- example : If all the characters begin with 'C'.
+	
+			>>> people = ["Charlie", "Casey", "Cody", "Carly", "Christina"]
+			>>> all([name[0]=='C' for name in people])
+			True
+			>>> 
+			>>> people.append("Kristy")
+			>>> [name[0]=='C' for name in people]
+			[True, True, True, True, True, False]
+			>>> all([name[0]=='C' for name in people])
+			False
+			>>> 
+
+	
+	- any : Return TRUE if any of the element of the iterable is truthy. If the iterable is empty, return False.
+	
+			>>> any([ val > 5 for val in [1,2,3]])
+			False
+			>>> any([ val > 2 for val in [1,2,3,5]])
+			True
+
+			
+
+
+###### 5 : Generator Expressions and using sys.getsizeof
+
+	- Generator : is lighter than the list processing.
+		- Use a generator expression if all you are doing is iterating once. If you want to store and use the generated results, then you are probably better off with a list comprehension.
+		
+			>>> import sys
+			>>> # A simple comparison of size (in Bytes)
+			>>> list_comp = sys.getsizeof([x * 10 for x in range(1000)])
+			>>> gen_exp = sys.getsizeof(x * 10 for x in range(1000))
+				
+			>>> print("To do the same thing, it takes...")
+			To do the same thing, it takes...
+			>>> print(f"List Comprehension: {list_comp} bytes")
+			List Comprehension: 9024 bytes
+			>>> print(f"Generator Expression: {gen_exp} bytes")
+			Generator Expression: 88 bytes
+
+
+###### 6 : sorted
+	
+	- Can work with any iterable item.
+	- It returns a copy but does not change the contents.
+	
+			>>> nums = [4,6,2,30,55,24]
+			>>> sorted(nums)
+			[2, 4, 6, 24, 30, 55]
+			>>> nums
+			[4, 6, 2, 30, 55, 24]
+			>>> sorted(nums, reverse=True)
+			[55, 30, 24, 6, 4, 2]
+			>>> nums
+			[4, 6, 2, 30, 55, 24]
+			>>> nums.sort()
+			>>> nums
+			[2, 4, 6, 24, 30, 55]
+	
+	- Example :
+		users = [
+			{"username": "samuel", "tweets": ["I love cake", "I love pie", "hello world!"]},
+			{"username": "katie", "tweets": ["I love my cat"]},
+			{"username": "jeff", "tweets": [], "color": "purple"},
+			{"username": "bob123", "tweets": [], "num": 10, "color": "teal"},
+			{"username": "doggo_luvr", "tweets": ["dogs are the best", "I'm hungry"]},
+			{"username": "guitar_gal", "tweets": []}
+		]
+		
+		# To sort users by their username
+		# Here "key" always takes a function
+		>>> sorted(users,key=lambda u: u['username'])
+		[{'username': 'bob123', 'tweets': [], 'num': 10, 'color': 'teal'}, {'username': 'doggo_luvr', 'tweets': ['dogs are the best', "I'm hungry"]}, {'username': 'guitar_gal', 'tweets': []}, {'username': 'jeff', 'tweets': [], 'color': 'purple'}, {'username': 'katie', 'tweets': ['I love my cat']}, {'username': 'samuel', 'tweets': ['I love cake', 'I love pie', 'hello world!']}]
+		
+		# Finding our most active users...
+		# Sort users by number of tweets, descending
+		>>> sorted(users,key=lambda u: len(u["tweets"]), reverse=True)
+		[{'username': 'samuel', 'tweets': ['I love cake', 'I love pie', 'hello world!']}, {'username': 'doggo_luvr', 'tweets': ['dogs are the best', "I'm hungry"]}, {'username': 'katie', 'tweets': ['I love my cat']}, {'username': 'jeff', 'tweets': [], 'color': 'purple'}, {'username': 'bob123', 'tweets': [], 'num': 10, 'color': 'teal'}, {'username': 'guitar_gal', 'tweets': []}]
+		
+		# ANOTHER EXAMPLE DATA SET==================================
+		songs = [
+			{"title": "happy birthday", "playcount": 1},
+			{"title": "Survive", "playcount": 6},
+			{"title": "YMCA", "playcount": 99},
+			{"title": "Toxic", "playcount": 31}
+		]
+		
+		# To sort songs by playcount
+		sorted(songs, key=lambda songs: songs['playcount'])
+		[{'title': 'happy birthday', 'playcount': 1}, {'title': 'Survive', 'playcount': 6}, {'title': 'Toxic', 'playcount': 31}, {'title': 'YMCA', 'playcount': 99}]
+		
+		>>> sorted(songs, key=lambda songs: songs['playcount'], reverse=True)
+		[{'title': 'YMCA', 'playcount': 99}, {'title': 'Toxic', 'playcount': 31}, {'title': 'Survive', 'playcount': 6}, {'title': 'happy birthday', 'playcount': 1}]
+	
+
+	
+###### 7 : max and min
+	
+		- Returns the largest item in an iterable or the largest of two or more arguments.
+		
+			names = ['Arya', "Samson", "Dora", "Tim", "Ollivander"]
+			
+			# finds the minimum length of a name in names
+			min(len(name) for name in names)
+			>> 3
+			
+			# find the longest name itself
+			max(names, key=lambda n:len(n))
+			>> Ollivander
+			
+			songs = [
+				{"title": "happy birthday", "playcount": 1},
+				{"title": "Survive", "playcount": 6},
+				{"title": "YMCA", "playcount": 99},
+				{"title": "Toxic", "playcount": 31}
+			]
+			
+			# Finds the song with the lowerest playcount
+			min(songs, key=lambda s: s['playcount'])
+			>> {"title": "happy birthday", "playcount": 1}
+			
+			# Finds the title of the most played song
+			max(songs, key=lambda s: s['playcount'])['title']
+			>> YMCA
+			
+
+###### 8 : reversed 
+		- It Return a reverse iterator.
+		
+			>>> nums = [1,2,3,4]   
+			>>> nums.reverse()
+			>>> nums
+			[4, 3, 2, 1]
+			>>> list(reversed(nums))
+			[1, 2, 3, 4]
+			>>> [char for char in reversed("hello world")]	   
+			['d', 'l', 'r', 'o', 'w', ' ', 'o', 'l', 'l', 'e', 'h']
+			>>> [print(char) for char in reversed("hello world")]
+				
+			d
+			l
+			r
+			o
+			w
+			
+			o
+			l
+			l
+			e
+			h
+	
+		
+		
+###### 9 : Len() and a Special Sneak Peak of OOP!
+
+		- len() : Return the lenght(the number of items) of an object. The argument may be a sequence(such as a string, tuple, list, or range) or a collection(dictionary, set).
+		
+			>>> len('Hi how are you ?')
+			16
+			>>> len({"s":100, "r":0})
+			2
+		
+		- How the lenght is calculated : There is BIF called "__len__()" which takes care of returning the len().
+			>>> [1,2,3].__len__()
+			3
+			>>> len([1,2,3])
+			3		
+
+	- We can actually override this function, to write our own version of "len" for that object.
+			class SpecialList:
+			
+				def __init__(self, data):
+					self.__data = data
+			
+				def __len__(self):  # JUST LOOK AT THIS LINE
+					return 50
+			
+			
+			l1 = SpecialList([1,40,30,100,30,1,2,3,4])
+			l2 = SpecialList([1,3,4,5]) 
+			
+			print(len(l1)) #50
+			>> 50
+			print(len(l2)) #50
+			>> 50
+			
+			
+###### 10 : Abs(), Sum() and Round()
+
+	- Abs() : Return the absolute value of a number. for both +ve and -ve values also for float. example : for -2 it will be 2 and for 3.4444 it will be 3.4444.
+	
+	- sum() : Takes a iterable and an optional start. Returns the sum of start and the items of an iterable from left to right and returns the total.
+	
+			>>> sum([1,2,3], 10)
+			16
+			>>> sum([1,2,3], -6)
+			0
+
+	- round() : Return number rounded to "ndigits" precision after the decimal point. If "ndigits" is omitted or is None, it returns the nearest integer to its output.
+			
+			>>> round(10.2)
+			10
+			>>> round(1.212121, 2)
+			1.21	
+			
+
+			
+###### 11 : ZIP Basics.
+
+		- If we have 2 lists, its going to be create a new list in which it pairs up the 1st elements of both the lists, 2nd elements of both the lists, 3rd elements of both the lists .... and so on.
+		- Its going to continue untill the all the elements are paired(in which case both the lists are of same size) or the elements of the shortest list exhausts.
+		- It can do this for all the iterables.
+	
+			>>> first_zip = zip([1,2,3], [4,5,6])
+			>>> list(first_zip)
+			[(1, 4), (2, 5), (3, 6)]
+			>>> dict(first_zip)
+			{}
+			>>> 
+			>>> first_zip = zip([1,2,3], [4,5,6])
+			>>> dict(first_zip)
+			{1: 4, 2: 5, 3: 6}
+
+		- Another example.
+
+			>>> nums1 = [1,2,3,4,5]
+			>>> nums2 = [6,7,8,9,10]
+			>>> z = zip(nums1, nums2)
+			>>> list(z)
+			[(1, 6), (2, 7), (3, 8), (4, 9), (5, 10)]
+			>>> 
+			>>> 
+			>>> dict(zip(nums1, nums2))
+			{1: 6, 2: 7, 3: 8, 4: 9, 5: 10}
+
+		- Zipping more than 2 iterables.
+			>>> words = ['hi', 'lol', 'haha', ':)']
+			>>> list(zip(words,nums1,nums2))
+			[('hi', 1, 6), ('lol', 2, 7), ('haha', 3, 8), (':)', 4, 9)]
+			>>> 
+
+ 
+		- * operator to unpack the list in the below example.
+			>>> 
+			>>> 
+			>>> five_by_two = [(0,1), (1,2), (2,3), (3,4), (4,5)]
+			>>> list(zip(*five_by_two))
+			[(0, 1, 2, 3, 4), (1, 2, 3, 4, 5)]	
+			
+			
+			
+			
+###### 12 : More complex zips.
+
+
+		midterms = [80,91,78]
+		finals = [98,89,53]
+		students = ['dan', 'ang', 'kate']
+		
+		# return the max first.
+		>>> final_grades = [max(pair) for pair in zip(midterms, finals)]
+		>>> list(final_grades)
+		[98, 91, 78]
+		
+		# returns dict with {student:highest score} USING DICT COMP
+		# {'dan': 98, 'ang': 91, 'kate': 78}
+		>>> final_grades = {t[0]:max(t[1], t[2]) for t in zip(students, midterms, finals)}
+		>>> {'dan': 98, 'ang': 91, 'kate': 78}
+		
+		# returns dict with {student:highest score} (same thing as above) USING MAP+LAMBDA
+		# {'dan': 98, 'ang': 91, 'kate': 78}
+		# Approach from inner to outer.
+		final_grades = dict(
+			zip(
+				students,
+				map(
+					lambda pair: max(pair),
+					zip(midterms, finals)
+				)
+			)
+		)
+		
+		# returns dict with student:average score
+		# {'dan': 89.0, 'ang': 90.0, 'kate': 65.5}
+		avg_grades = dict(
+			zip(
+				students,
+				map(
+					lambda pair: ((pair[0]+pair[1])/2),
+					zip(midterms, finals)
+				)
+			)
+		)		
+		

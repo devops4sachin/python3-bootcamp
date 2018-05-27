@@ -1,0 +1,330 @@
+############################### Variables and Strings ####################################
+
+
+####### 1 : Intro to Variables
+
+	- A variable in Python is like a variable in mathematics: it is a named symbol that holds a value.
+	
+		x = 100
+		khaleesi_mother_of_dragons = 1
+		print(khaleesi_mother_of_dragons + x)
+		101
+		
+	- Variables must be assigned before they can be used.
+	
+	- Variables can be assigned at the same time as other variables.
+		
+		all, at, once = 5, 10, 15
+		
+		
+		
+####### 2 : Variable Naming Restrictions and Conventions
+
+	- Naming Restrictions
+		1. Variables must start with a letter or underscore and not numbers
+		2. The rest of the name must consist of letters, numbers, or underscores
+		3. Names are case-sensitive
+		
+		
+		
+####### 3 : Naming Conventions
+
+	- Most Python programmers prefer to use standard style conventions when naming things:
+		1. Most variables should be snake_case (underscores between words)
+		
+		2. Most variables should be also be lowercase, with some exceptions:
+			- CAPITAL_SNAKE_CASE usually refers to constants (e.g. PI = 3.14)
+			- UpperCamelCase usually refers to a class (more on that later)
+			
+		3. Variables that start and end with two underscores (called "dunder" for double underscore) are supposed to be private or left alone.
+			__no_touchy__
+			
+		
+		
+####### 4 : Data Types Overview
+
+	- In any assignment, the assigned value must always be a valid data type.
+
+	- Python data types include:
+
+	data type		description
+	bool			"True" or "False" values
+	int				an integer (1, 2, 3)
+	float			1.2, 3.5
+	str				(string) a sequence of Unicode characters, e.g. "Colt" or "程序设计"
+	list			an ordered sequence of values of other data types, e.g. [1, 2, 3] or ["a", "b", "c"]
+	dict			a collection of key: values, e.g. { "first_name": "Colt", "last_name": "Steele" }
+	Among others!
+
+	- Boolean Values
+	
+		>>> is_active = True
+		>>> is_active
+		True
+		>>> game_over = False
+		>>> game_over
+		False
+		>>> game_over = true
+		Traceback (most recent call last):
+		File "<stdin>", line 1, in <module>
+		NameError: name 'true' is not defined
+		
+		
+	- String Values : Its always between " " or ' '.
+
+		>>> some_string = "8"
+		>>> some_string
+		'8'
+		>>> type(some_string)
+		<class 'str'>
+
+	
+
+####### 5 : Dynamic Typing
+
+	- Python is highly flexible about reassigning variables to different types:
+	
+			awesomeness = True
+			print(awesomeness) # True
+			
+			awesomeness = "a dog"
+			print(awesomeness) # a dog
+			
+			awesomeness = None
+			print(awesomeness) # None, means NULL in python
+			
+			awesomeness = 22 / 7
+			print(awesomeness) # 3.142857142857143
+
+	- We call this dynamic typing, since variables can change types readily.
+	
+	- Other languages, such as C++, are statically-typed, and variables are stuck with their originally-assigned type:
+	
+			int not_awesomeness = 5;
+			not_awesomeness = "cool"; // !Error
+
+
+####### 6 : Special Value "None", means NULL
+
+		>>> None
+		>>> none
+		Traceback (most recent call last):
+		File "<stdin>", line 1, in <module>
+		NameError: name 'none' is not defined
+		
+
+		>>> name = "Daisy"
+		>>> age = 20
+		>>> is_having_child = None
+		>>> is_having_child
+		>>>
+		>>> type(is_having_child)
+		<class 'NoneType'>
+		
+
+		
+####### 7 : Double Vs. Single Quotes
+
+		- Declaring Strings
+
+			- String literals in Python can be declared with either single or double quotes.
+			
+				my_other_str = 'a hat'
+				my_str = "a cat"
+			
+			- Either one is perfectly fine; but make sure you stick to the same convention throughout the same file.
+			
+					>>> name = "Sachin"
+					>>> name2 = 'Sachin'
+					>>> name
+					'Sachin'
+					>>> name2
+					'Sachin'
+					>>> print(name)
+					Sachin
+					>>> print(name2)
+					Sachin
+					>>>
+					>>> msg = "He said "hello there""
+					File "<stdin>", line 1
+						msg = "He said "hello there""
+											^
+					SyntaxError: invalid syntax
+					>>>
+					>>> msg = "He said 'hello there'"
+					>>> msg
+					"He said 'hello there'"
+					>>> msg = 'He said "hello there"'
+					>>> msg
+					'He said "hello there"'
+					>>>
+
+					
+					
+					
+####### 8 : String Escape Characters
+
+	- In Python there are also "escape characters", which are "metacharacters" - they get interpreted by Python to do something special:
+	
+			new_line = "hello \n world"
+			print(new_line)
+			# hello
+			# world	
+		
+	- All escape characters start with a backslash "\". 
+
+	- You can do advanced things like include hexadecimal characters with "\x"
+			hexadecimal = "\x41\x42\x43"  # "abc"
+			
+		>>> string = "This is backslash: \\"
+		>>> string
+		'This is backslash: \\'
+
+		>>> str = "He said \"ha ha\" "
+		>>> str
+		'He said "ha ha" '
+		
+		
+		
+####### 9: String Concatenation
+
+	- Concatenation is combining multiple strings together. In Python you can do this simply with the "+" operator.
+
+		str_one = "your"
+		str_two = "face"
+		str_three = str_one + " " + str_two  # your face
+
+	- You can also use the "+=" operator!
+	
+		str_one = "ice"
+		str_one += " cream"
+		str_one  # ice cream	
+		
+		
+		>>> username = "bluethecat"
+		>>> print("Hello there and welcome to the game, : " + username)
+		Hello there and welcome to the game, : bluethecat
+
+>>> 8 + "hello"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+>>> number = 10
+>>> print("Your number is" + number + "which is int")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: must be str, not int
+
+
+
+####### 10: Formatting Strings
+
+	- There are also several ways to format strings in Python to interpolate variables.
+	
+	- The new way (new in Python 3.6+) => F-Strings
+
+		x = 10
+		formatted = f"I've told you {x} times already!"
+
+	- The tried-and-true way (Python 2 -> 3.5) => .format method
+	
+		x = 10
+		formatted = "I've told you {} times already!".format(x)
+
+	- The old way => % operator (deprecated)
+	
+		x = 10
+		formatted = "I've told you %d times already!" % (x)
+		
+		
+>>> number = 10
+>>> print("Your number is" + number + "which is int")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: must be str, not int
+>>>
+>>> print(f"Your nuber is {number} which is int")
+Your nuber is 10 which is int
+
+
+
+####### 11 : IMPORTANT: Interpolation w/ Udemy Exercises	
+
+	- Udemy only supports Python version 3.5, thus use below,
+	
+>>> fruit = "banana"
+>>> ripeness = "unripe"
+>>> print("The {} is {}".format(fruit,ripeness))
+The banana is unripe
+
+- for 3.6+ this works,
+>>> print(f"The {fruit} is {ripeness}")
+The banana is unripe
+
+
+
+####### 12 : Strings and Indexes (Indicies?)
+
+>>> "lol"[0]
+'l'
+>>> name = "Chuck"
+>>> name[0]
+'C'
+>>> answer = "yessir"
+>>> answer[0]
+'y'
+>>> answer[-1]
+'r'
+>>> ##### -1 Start from the end
+...
+>>>
+>>> answer[-2]
+'i'
+>>> answer[-6]
+'y'
+
+
+
+####### 13 : Converting Data Types
+
+- In string interpolation, data types are implicitly converted into string form(more on this later in OOP).
+- You can also explicitly convert variables by using the name of the builtin type as a function(more on functions later):
+
+>>> decimal = 12.563457
+>>> integer = int(decimal)
+>>> integer
+12
+
+>>> my_list = [1, 2, 3]
+>>> my_list_as_a_string = str(my_list)
+>>> my_list_as_a_string
+'[1, 2, 3]'
+>>> print(my_list_as_a_string)
+[1, 2, 3]
+>>>
+>>>
+>>> float(12)
+12.0
+>>> int(99.65)
+99
+>>> str(8)
+'8'
+
+
+######## 14 : Mileage convertor
+
+C5246840@PNQN50893912A /cygdrive/c/Sachin_Folder/udemy_videos/python-modern-python3-bootcamp/python-modern-python3-bootcamp/7_Variables_and_Strings
+$ cat mileage.py
+print("How many kilometers did you cycle today?")
+kms = input()
+miles = float(kms)/1.60934
+miles = round(miles, 2)
+print(f"Your {kms}km ride was {miles}mi ")
+
+
+C5246840@PNQN50893912A /cygdrive/c/Sachin_Folder/udemy_videos/python-modern-python3-bootcamp/python-modern-python3-bootcamp/7_Variables_and_Strings
+$ python mileage.py
+How many kilometers did you cycle today?
+32
+Your 32km ride was 19.88mi

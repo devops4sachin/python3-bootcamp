@@ -1,0 +1,251 @@
+######### Tuples and Sets ##########
+
+Tuple : An ordered collection or grouping of items. Same as Lists but it is immutable. Which means it cannot be changed.
+
+Syntax : numbers = (1, 2 ,3 ,4)
+
+
+>>> alphabet = (1, 2, 3, 4)
+>>> alphabet
+(1, 2, 3, 4)
+>>> type(alphabet)
+<class 'tuple'>
+>>> 
+>>> alphabet[0] = 'A'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+>>> 
+
+
+- Why to use tuple :
+	- They are faster than lists.
+	- It makes your code, which can prevent any bug modifying the tuple.
+	- We can use a valid keys in a dictionary.
+	- Some methods return them to you - like .items() when working with dictionaries!
+
+
+- We access them like a lists
+	>>> months = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
+	>>> months[3]
+	'Apr'
+
+- We can use tuple as key in the dictionary.
+
+	>>> location = {
+	...     (35.68, 39.69): "Tokyo office",
+	...     (40.71, 74.00): "New York",
+	...     (37.77, 122.41): "San Fransico"
+	... }
+	>>> location
+	{(35.68, 39.69): 'Tokyo office', (37.77, 122.41): 'San Fransico', (40.71, 74.0): 'New York'}
+	>>> 
+	>>> location[(35.68, 39.69)]
+	'Tokyo office'
+
+
+- We cannot use List as a dictionary.
+
+	>>> locs = {[35,39]: "Tokyo"}
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	TypeError: unhashable type: 'list'
+	>>> 
+
+
+- Tuple is written as a Dictionary items.
+
+	>>> cat = {"name": "biscuit", "age": "0.5", "favourite_toy": "my chapstick"}
+	>>> type(cat)
+	<class 'dict'>
+	>>> 
+	>>> cat.items()
+	dict_items([('age', '0.5'), ('name', 'biscuit'), ('favourite_toy', 'my chapstick')])		
+
+
+##### Tuple looping and methods ######
+
+	>>> for month in months:
+	...     print(month)
+	... 
+	Jan
+	Feb
+	Mar
+	Apr
+	May
+	Jun
+	Jul
+	Aug
+	Sep
+	Oct
+	Nov
+	Dec
+
+	>>> x = (2,3,3,2,4,5,6,6)
+	>>> x.count(3)
+	2
+	>>> x.count(4)
+	1
+	>>> x.index(3)
+	1
+	>>> x.index(3,2)
+	2
+
+
+- Nested tuples :
+
+	>>> nums = (1,2,(3,4),5)
+	>>> nums
+	(1, 2, (3, 4), 5)
+	>>> 
+	>>> nums[0:4]
+	(1, 2, (3, 4), 5)
+	>>> 
+	>>> nums[0:3]
+	(1, 2, (3, 4))
+
+
+############ Intro to SETS ############
+	
+- Sets are like formal mathematical sets.
+- Sets do not have duplicate values.
+- They are unordered. Thus cannot access items using the index.
+
+- Sets can be used if you need to keep track of a collection of elements, but don't care about ordering or duplicates.
+
+- Creating a sets.
+
+		>>> s = set({1,2,3,4,5,5,5})	# Create sets using {} and .set() function.
+		>>> 
+		>>> s1 = {1, 2, 3}				# Directly creating the sets.
+		>>> 
+		>>> type(s)
+		<class 'set'>
+		>>> 
+		>>> type(s1)
+		<class 'set'>
+		>>> 
+		>>> s
+		{1, 2, 3, 4, 5}
+		>>> 
+		>>> s1
+		{1, 2, 3}	
+
+
+- Sets cannot be accessed using the indexes.
+
+		>>> s[0]
+		Traceback (most recent call last):
+		  File "<stdin>", line 1, in <module>
+		TypeError: 'set' object does not support indexing
+		>>> 
+		>>> 3 in s
+		True
+
+
+- Sets are unordered.
+
+		>>> s2 = {1, 2, 4, 'a', 'c'}
+		>>> 
+		>>> s2
+		{'c', 2, 4, 'a', 1}
+		>>> 		
+
+
+- Usecase for sets.
+	- In case if you want to remove the duplicate cities.
+
+		>>> cities = ['Pune', 'Delhi', 'London', 'Pune', 'London']
+		>>> 
+		>>> uniq_cities = set(cities)
+		>>> 
+		>>> uniq_cities
+		{'Delhi', 'London', 'Pune'}
+		>>> 
+		>>> len(uniq_cities)
+		3
+
+
+
+############ SET methods and SET Match #############
+
+	 -add
+		>>> uniq_cities
+		{'Delhi', 'London', 'Pune'}
+		>>> uniq_cities.add('Sangli')
+		>>> uniq_cities
+		{'Sangli', 'Delhi', 'London', 'Pune'}
+		>>> 
+
+     	 - Remove
+		>>> uniq_cities.remove('Delhi')
+		>>> uniq_cities
+		{'Sangli', 'London', 'Pune'}
+		>>> 		
+		
+
+	 - Copy
+		>>> other_uniq_cities = uniq_cities.copy()
+		>>> 
+		>>> other_uniq_cities == uniq_cities
+		True
+		>>> 
+		>>> uniq_cities is other_uniq_cities
+		False
+		>>> 
+		>>> 
+		>>> other_uniq_cities.clear()
+		>>> other_uniq_cities
+		set()
+
+
+- SET Math :
+
+	- Intersection :
+
+		>>> math_student & bio_student
+		{'Anushka'}
+		>>> 
+
+	- Union :
+
+		>>> math_student = {"Anushka", "Sachin", "Aradhana"}
+		>>> bio_student = {"Anushka", "Avadhoot"}
+		>>> 
+		>>> math_student | bio_student
+		{'Aradhana', 'Avadhoot', 'Sachin', 'Anushka'}
+
+
+########### SET Comprehensions ###########
+
+- a SET Comprehensions and Dictionary Comprehensions. We specify a ":" in the dictionary comprehensions.
+
+		>>> {x*2 for x in range(1,10)}
+		{2, 4, 6, 8, 10, 12, 14, 16, 18}
+		>>> 
+		>>> {x:x*2 for x in range(1,10)}
+		{1: 2, 2: 4, 3: 6, 4: 8, 5: 10, 6: 12, 7: 14, 8: 16, 9: 18}
+
+
+- SET comprehension
+
+		>>> {char.upper() for char in "hello"}
+		{'L', 'E', 'H', 'O'}
+		>>> 
+		>>> 
+
+- Check if a string contains all the vowels
+
+		>>> def all_vowels_in_string(string):
+		...     return len({ char for char in string if char in "aeiou"}) == 5
+		... 
+		>>> all_vowels_in_string("sachin is great")
+		False
+		>>> 
+		>>> all_vowels_in_string("aeiou")
+		True
+		>>> 
+
+
+
+

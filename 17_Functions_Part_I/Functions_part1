@@ -1,0 +1,215 @@
+#################### Functions part 1 #####################
+
+###### 1 : Defining Functions
+
+
+###### 2 : Function Structure
+
+	def name_of_function():
+		body of fuction
+
+###### 3 : Return values from Functions
+
+	>>> def square_of_7():
+	...     return 7**2
+	... 
+	>>> sqr_7 = square_of_7()
+	>>> 
+	>>> sqr_7
+	49
+
+
+###### 4 : Flip coin function using random.
+
+	>>> from random import random
+	>>> def flip_coin():
+	...     if random() > 0.5:
+	...             return "HEADS"
+	...     else:
+	...             return "TAILS"
+	... 
+	>>> print(flip_coin())
+	HEADS
+	>>> print(flip_coin())
+	TAILS
+	>>> print(flip_coin())
+	TAILS
+	>>> print(flip_coin())
+	TAILS
+	>>> print(flip_coin())
+	HEADS
+
+###### 5 : Parameters.
+
+	>>> def square(num):
+	...     return num*num
+	...
+	>>> tmp = square(4)
+	>>> tmp
+	16
+
+
+###### 6 : Common Mistakes when returning.
+
+	- Please take care of indentation of "return" word while writing the code.
+	
+	>>> def sum_odd_numbers(numbers):
+	...     total = 0
+	...     for num in numbers:
+	...             if num % 2 != 0:
+	...                     total = total + num
+	...     return total
+	...
+	>>> total=sum_odd_numbers([1,2,3,4,5,6])
+	>>> total
+	9
+
+	- Make sure to write a cleaner code.
+	
+			>>> def is_odd_number(num):
+			...     if num % 2 != 0:
+			...             return True
+			...     else:
+			...             return False
+			
+		- Instead of this we can write the cleaner code like this. Not required to have "else" part.
+		
+			>>> def is_odd_number(num):
+			...     if num % 2 != 0:
+			...             return True
+			...     return False
+			
+			
+###### 7 : Default Parameters.
+
+		>>> def exponent(num, power=2):
+		...     return num**power
+		...
+		>>> exponent(2,3)
+		8
+		>>> exponent(2)
+		4
+
+		- What can default parameters be : Anything! Functions, lists, dictionaries, strings, booleans.
+		
+		- Example of a function as a parameter/default parameter.
+		
+		>>> def add(a, b):
+		...     return a+b
+		...
+		>>> def substract(a, b):
+		...     return a-b
+		...
+		>>> def math(a, b,fn=add):
+		...     return fn(a,b)
+		...
+		>>> math(2,2)
+		4
+		>>> math(3,2,substract)
+		1
+		>>>
+		
+		- Make sure the default parameter either go at the end, or every other single parameter has a default value.
+		- We can't have the default parameter at the begining.
+		
+		
+###### 8 : Keyword arguments. Here the order does not matter.
+
+		- But here you will have to specify all the arguments values.
+		- It is different from the default parameters.
+			- When you define a function and use an "=", you are setting a default parameter.
+			- When you invoke a fucntion and use an "=", you are making a keywork argument.
+			
+			
+			>>> def full_name(first, last):
+			...     return "Your name is {first} {last}"
+			...
+			>>>
+			>>> full_name(first="Sachin", last="Kesarkar")			# The ordering does not matter here.
+			'Your name is {first} {last}'
+			>>>
+			>>> full_name(last="Kesarkar", first="Sachin")
+			'Your name is {first} {last}'
+
+		- You can specify the Keyword arguments even when you have specified the default parameters.
+		
+		>>> def exponent(num, power=2):
+		...     return num**power
+		...
+		>>> exponent(power=3,num=2)
+		8
+		>>> exponent(4,3)
+		64
+		>>>
+		
+		
+		
+###### 9 : Scope.
+		- Variables defined/created in functions are scoped in that function.
+		- But we can access the variables defined inside the function outside the scope of that function by returing those variables.
+		
+		- global : Variable not defined in a function is a global variable. we cannot directly access the global variables inside the function.
+		
+			>>> total = 0
+			>>> def increment():
+			...     total += 1
+			...     return total
+			...
+			>>> increment()
+			Traceback (most recent call last):
+			File "<stdin>", line 1, in <module>
+			File "<stdin>", line 2, in increment
+			UnboundLocalError: local variable 'total' referenced before assignment
+			
+			- We can access the global variable using below method.
+			
+			>>>
+			>>> total = 0
+			>>> def increment():
+			...     global total
+			...     total += 1
+			...     return total
+			...
+			>>> increment()
+			1
+			
+			
+			- We can access the global but cannot change it with in function without the "global" keyword.
+			
+			>>>
+			>>> total = 0
+			>>> def increment():
+			...     global total
+			...     total += 1
+			...     return total
+			...
+			>>> increment()
+			1
+			
+			
+			- "nonlocal" : This keyword is used to access the non-global parent function.
+			
+			>>> def outer():
+			...     count = 0
+			...     def inner():
+			...             nonlocal count
+			...             count += 1
+			...             return count
+			...     return inner()
+			...
+			>>> outer()
+			1
+			
+			
+			
+##### 10 : Documenting functions
+			>>> def say_hello():
+			...     """ A simple function that returns the string hello"""
+			...     return "Hello !"
+			...
+			>>> say_hello.__doc__
+			' A simple function that returns the string hello'
+			
+			
+			>>> random.randint.__doc__
+			'Return random integer in range [a, b], including both end points.\n

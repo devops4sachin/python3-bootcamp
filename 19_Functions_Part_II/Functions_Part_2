@@ -1,0 +1,206 @@
+#################### Functions part 2 #####################
+
+
+###### 1 : Introduction and *args
+	
+	- *args : A special operator we can pass to functions. 
+		- Gathers remaining arguments as a tuple.
+		
+	- *args returns a tuple.
+		>>> def sum_all_nums(*args):
+		...     print(args)
+		...
+		>>> sum_all_nums(4,6,9,4,10)
+		(4, 6, 9, 4, 10)
+		>>> sum_all_nums(4,6)
+		(4, 6)
+		>>>
+
+	- How to traverse the *args.
+		>>> def sum_all_nums(*args):
+		...     print(args)
+		...
+		>>> sum_all_nums(4,6,9,4,10)
+		(4, 6, 9, 4, 10)
+		>>> sum_all_nums(4,6)
+		(4, 6)
+		>>>
+
+	- We can also pass our individual arguments along with the *args.
+		>>> def sum_all_nums(*args):
+		...     print(args)
+		...
+		>>> sum_all_nums(4,6,9,4,10)
+		(4, 6, 9, 4, 10)
+		>>> sum_all_nums(4,6)
+		(4, 6)
+		>>>
+		
+		
+###### 2 : **kwargs (keyword args)
+
+	- **kwargs : Gathers remaining keyword arguments as a dictionary.
+	
+		>>> def fav_colors(**kwargs):
+			print(kwargs)
+			for person, color in kwargs.items():
+				print(f"{person} favorite color is {color}")
+
+		
+		>>> fav_colors(sachin="orange", chimbu="purple", aradhana="red")
+		{'sachin': 'orange', 'chimbu': 'purple', 'aradhana': 'red'}
+		sachin favorite color is orange
+		chimbu favorite color is purple
+		aradhana favorite color is red
+		>>> 
+		>>>
+		>>> fav_colors(swapnil="red", amol="white", surbhi="pink", yash="blue")
+		{'swapnil': 'red', 'amol': 'white', 'surbhi': 'pink', 'yash': 'blue'}
+		swapnil favorite color is red
+		amol favorite color is white
+		surbhi favorite color is pink
+		yash favorite color is blue
+		>>> 
+		
+	- Example :
+		>>> def special_greetings(**kwargs):
+			if "Sachin" in kwargs and kwargs["Sachin"] == "Special":
+				return "You get a special greetings Sachin !!"
+			elif "Sachin" in kwargs:
+				return f"{kwargs['Sachin']} Sachin!"
+			return "Not sure who this is ...."
+		
+		>>> special_greetings(Swapnil="hello", Sachin="Special", Amol="Hi")
+		'You get a special greetings Sachin !!'
+		>>> special_greetings(Swapnil="hello", Sachin="Hi, How are you ...")
+		'Hi, How are you ... Sachin!'
+		>>> 
+		
+		
+		
+###### 3 : Ordering Parameters.
+
+	- There is a order we have to follow in a function declaration as below.
+		1) parameters
+		2) *args
+		3) default parameters
+		4) **kwargs
+		
+	- Example :
+	
+>>> def display_info(a, b, *args, instructor="Sachin", **kwargs):
+	return [a, b, args, instructor, kwargs]
+
+>>> print(display_info(1, 2, 3, last_name="Kesarkar", job = "Instructor"))
+[1, 2, (3,), 'Sachin', {'last_name': 'Kesarkar', 'job': 'Instructor'}]
+
+	parameters - 1, 2
+	*args - (3,) - It puts extra comma to identify it as a tuple.
+	default parameters - instructor="Sachin"
+	kwargs - {'last_name':'Kesarkar', 'job':'Instructor'}
+	
+	
+	
+###### 4 : Tuple unpacking.
+	
+	- Using * as an Argument : Argument unpacking.
+		- We can use * as an argument to a function to "unpack" values.
+		
+		
+	- The below will not work if we send a List of items instead of individual items.
+	
+			>>> def sum_all_values(*args):
+				print(args)
+				total = 0
+				for num in args:
+					total += num
+				print(total)
+			
+				
+			>>> nums = [1,2,3,4,5,6]
+			>>> sum_all_values(nums)
+			([1, 2, 3, 4, 5, 6],)		<<<< It treats this as a List of items and not able to read individual items.
+			Traceback (most recent call last):
+			File "<pyshell#62>", line 1, in <module>
+				sum_all_values(nums)
+			File "<pyshell#60>", line 5, in sum_all_values
+				total += num
+			TypeError: unsupported operand type(s) for +=: 'int' and 'list'
+
+	- It treats this as a List of items and not able to read individual items.
+	- Same issue we get for the tuple of items.
+	- Thus we will have to unpack the List/tuple using the * operator as below.
+	
+			>>> sum_all_values(*nums)
+			(1, 2, 3, 4, 5, 6)
+			21
+			>>> sum_all_values(*nums, 12)
+			(1, 2, 3, 4, 5, 6, 12)
+			33
+			>>> 
+			>>> nums = [1,2,3,4,5,6]
+			>>> sum_all_values(*nums)
+			(1, 2, 3, 4, 5, 6)
+			21
+			
+			
+			
+###### 5 : Dictionary unpacking.
+
+		- Using ** as an Argument : Dictionary unpacking.
+		
+				>>> def display_names(first, second):
+					print(f"{first}")
+					print(f"{second}")
+					print(f"{first} says hello to {second}")
+				
+					
+				>>> names = {"first":"Sachin", "second":"Chimbu"}
+				>>> 
+				>>> display_names(names)
+				Traceback (most recent call last):
+				File "<pyshell#88>", line 1, in <module>
+					display_names(names)
+				TypeError: display_names() missing 1 required positional argument: 'second'
+				>>> 
+				>>> display_names(**names)
+				Sachin
+				Chimbu
+				Sachin says hello to Chimbu
+
+
+	- Another example :
+	
+				>>> def add_and_multiply_numbers(a,b,c):
+					print(a+b*c)
+				
+					
+				>>> data = dict(a=1,b=2,c=3)
+				>>> 
+				>>> add_and_multiply_numbers(data)
+				Traceback (most recent call last):
+				File "<pyshell#10>", line 1, in <module>
+					add_and_multiply_numbers(data)
+				TypeError: add_and_multiply_numbers() missing 2 required positional arguments: 'b' and 'c'
+				>>> add_and_multiply_numbers(**data)
+				7
+
+
+	- Another example :
+
+				>>> def add_and_multiple_numbers(a,b,c,**kwargs):
+					print(a + b * c)
+					print(" OTHER STUFF ....")
+					print(kwargs)
+				
+					
+				>>> data = dict(a=1,b=2,c=3,d=55, name="Sachin")
+				>>> add_and_multiple_numbers(**data)
+				7
+				OTHER STUFF ....
+				{'d': 55, 'name': 'Sachin'}
+				>>> 
+				>>> add_and_multiple_numbers(**data, cat="blue")
+				7
+				OTHER STUFF ....
+				{'d': 55, 'name': 'Sachin', 'cat': 'blue'}
