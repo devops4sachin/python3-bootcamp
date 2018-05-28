@@ -21,7 +21,7 @@ TypeError: 'tuple' object does not support item assignment
 - Why to use tuple :
 	- They are faster than lists.
 	- It makes your code, which can prevent any bug modifying the tuple.
-	- We can use a valid keys in a dictionary.
+	- We can use tuples as a valid keys in a dictionary.
 	- Some methods return them to you - like .items() when working with dictionaries!
 
 
@@ -247,5 +247,12 @@ TypeError: 'tuple' object does not support item assignment
 		>>> 
 
 
+
+########### Recap ###########
+- tuples are ordered collections of elements, they are immutable!
+- tuples are faster than lists and useful for protecting data
+- sets are unordered collections of unique values
+- sets and tuples can be created with {} and () or the set() or tuple() function
+- set comprehension is useful when converting other data types to a set
 
 

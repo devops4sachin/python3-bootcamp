@@ -147,8 +147,8 @@
 	- fromkeys : Creates key-value pairs from comma separated values.
 	
 		{}.fromkeys("a","b") # {'a': 'b'}
-		{}.fromkeys(["email"], 'unknown') # {'email': 'unknown'}
-		{}.fromkeys("a",[1,2,3,4,5]) # {'a': [1, 2, 3, 4, 5]}
+		{}.fromkeys(["email"], 'unknown') 		# {'email': 'unknown'}
+		{}.fromkeys("a",[1,2,3,4,5]) 			# {'a': [1, 2, 3, 4, 5]}
 		>>> new_user = {}.fromkeys(['name','score','email'],'unknown')
 		>>> new_user
 		{'name': 'unknown', 'score': 'unknown', 'email': 'unknown'}

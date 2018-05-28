@@ -1,0 +1,36 @@
+1) Given two lists ['CA','NJ','RI'] and ['California', 'New Jersey', 'Rhode Island'] create a dictionary that looks like
+ {'CA':'California', 'NJ':'New Jersey', 'RI':'Rhode Island'} and save that to variable "answer".
+    You can use "zip" build-in function for that.
+
+>>> answer = {list1[i]:list2[i] for i in range(len(list1))}
+>>> answer
+{'CA': 'California', 'NJ': 'New Jersey', 'RI': 'Rhode Island'}
+
+OR
+
+>>> answer2 = dict(zip(list1, list2))
+>>> answer2
+{'CA': 'California', 'NJ': 'New Jersey', 'RI': 'Rhode Island'}
+
+
+2) Given a person variable :
+person = [['name','Sachin'],['job','Technical Architect'],['city','Pune, Berlin']]
+Create a dictionary called "answer" that makes each first item in each list a key and the second item a corresponding value, like below.
+{'name':'Sachin', 'job':'Technical Architect', 'city':'Pune, Berlin'}
+
+>>> person = [['name','Sachin'],['job','Technical Architect'],['city','Pune, Berlin']]
+>>> answer = {list[0]:list[1] for list in person}
+>>> answer
+{'name': 'Sachin', 'job': 'Technical Architect', 'city': 'Pune, Berlin'}
+
+OR
+
+>>> answer2 = dict(person)
+>>> answer2
+{'name': 'Sachin', 'job': 'Technical Architect', 'city': 'Pune, Berlin'}
+
+
+3) ASCII codes dictionary :
+>>> answer = {i: chr(i) for i in range(65,90)}
+>>> answer
+{65: 'A', 66: 'B', 67: 'C', 68: 'D', 69: 'E', 70: 'F', 71: 'G', 72: 'H', 73: 'I', 74: 'J', 75: 'K', 76: 'L', 77: 'M', 78: 'N', 79: 'O', 80: 'P', 81: 'Q', 82: 'R', 83: 'S', 84: 'T', 85: 'U', 86: 'V', 87: 'W', 88: 'X', 89: 'Y'}
