@@ -1,0 +1,43 @@
+1) Generate Evens
+
+#Define a function called generate_evens
+#It should return a list of even numbers between 1 and 50(not including 50)
+def generate_evens():
+    return [num for num in range(1,50)  if num%2 == 0 ]
+
+
+2) Return a dictionary with the keys being the letters and the values being the count of the letter.
+
+'''
+multiple_letter_count("awesome") # {'a': 1, 'e': 2, 'm': 1, 'o': 1, 's': 1, 'w': 1}
+'''
+
+# flesh out multiple_letter count:
+def multiple_letter_count(string):
+    return {k:string.count(k) for k in string }
+
+
+3) Function should take in 4 parameters and should perform following manipulations.
+
+'''
+list_manipulation([1,2,3], "remove", "end") # return 3
+list_manipulation([1,2,3], "remove", "beginning") #  return 1
+list_manipulation([1,2,3], "add", "beginning", 20) #  return [20,1,2,3]
+list_manipulation([1,2,3], "add", "end", 30) #  return [1,2,3,30]
+'''
+
+def list_manipulation(values, command, position, value=None):
+    if command == "remove":
+        if position == "end":
+            return values.pop()
+        elif position == "beginning":
+            return values.pop(0)
+    elif command == "add":
+        if position == "end":
+            values.append(value)
+        else:
+            values.insert(0, value)
+    return values
+    
+
+4) 
