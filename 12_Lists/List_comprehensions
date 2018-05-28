@@ -24,11 +24,21 @@
 		>>> [char.upper() for char in name]
 		['S', 'A', 'C', 'H', 'I', 'N']
 
+		>>> colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+		>>>
+		>>> [color.upper() for color in colors]
+		['RED', 'ORANGE', 'YELLOW', 'GREEN', 'BLUE', 'INDIGO', 'VIOLET']
 
 		>>> numbers
 		[1, 2, 3, 4, 5]
 		>>> [str(num) for num in numbers]
 		['1', '2', '3', '4', '5']
+
+		>>> nums = [1,2,3,]
+		>>> [str(num) for num in nums]
+		['1', '2', '3']
+		>>> [str(num)+'Hello' for num in nums]
+		['1Hello', '2Hello', '3Hello']
 
 
 - List comprehension with conditional logic.
@@ -44,14 +54,15 @@
 
 - Here it will multiply by 2 if num is even otherwise it will divide by 2.
 
-		>>> [num*2 if num % 2 == 0 else num/2 for num in numbers]
+		>>> numbers = [1,2,3,4,5,6,7,8,9,10]
+		>>> [num*2 if num % 2 == 0 else num/2 for num in numbers]	# Multiply even numbers by 2 or dvide odd numbers by 2.
 		[0.5, 4, 1.5, 8, 2.5, 12, 3.5, 16, 4.5, 20]
 
 
 - String without a vowels.
 		>>> string = "This is so much fun"
 		>>> vowels = "aeiou"
-		>>> with_out_vowels_string = "".join(tmp for tmp in string if tmp not in vowels)
+		>>> with_out_vowels_string = " ".join(tmp for tmp in string if tmp not in vowels)
 		>>> with_out_vowels_string
 		'Ths s s mch fn'
 		>>> with_out_vowels_string = [ tmp for tmp in string if tmp not in vowels]
@@ -79,16 +90,46 @@
 		... 
 
 - Nested list comprehension.
-		>>> nested_list
-		[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-		>>> [[val for val in l] for l in nested_list]
-		[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+		- Usual way to iterate the list of lists.
+			>>> nested_list = [[1,2,3,],[4,5,6],[7,8,9]]
+			>>> for l in nested_list:
+			...     for val in l:
+			...             print(val)
+			...
+			1
+			2
+			3
+			4
+			5
+			6
+			7
+			8
+			9
+
+		- Nested list comprehension.
+			>>> nested_list
+			[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+			>>> [[val for val in l] for l in nested_list]
+			[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+			>>> [[print(val) for val in l ] for l in nested_list]
+			1
+			2
+			3
+			4
+			5
+			6
+			7
+			8
+			9
+
+
 		
 
 - Generating the Lists using list comprehension.
 		>>> board = [[num for num in range(1,4)] for val in range(1,4)]
 		>>> board
-		[[1, 2, 3		], [1, 2, 3], [1, 2, 3]]		
+		[[1, 2, 3], [1, 2, 3], [1, 2, 3]]		
 
 		>>> [["X" if num%2 != 0 else "O" for num in range(1,4)] for value in range(1,4)]
 		[['X', 'O', 'X'], ['X', 'O', 'X'], ['X', 'O', 'X']]

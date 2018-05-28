@@ -24,6 +24,22 @@
 
 - Accessing Data in Lists
 
+	- Like ranges, lists ALWAYS start counting at zero. So the first element lives at index 0.
+		friends = ["Ashley", "Matt", "Michael"]
+
+		print(friends[0]) # 'Ashley'
+		print(friends[2]) # 'Michael'
+		print(friends[3]) # IndexError
+
+		- Accessing values from End
+
+		print(friends[-1]) # 'Michael'
+		print(friends[-3]) # 'Ashley'
+		print(friends[-4]) # IndexError
+
+	
+
+	>>> colors = ["red", 'yellow', 'blue']
 	>>> colors[0]
 	'red'
 	>>> colors[-1]
@@ -92,7 +108,7 @@
 		>>> data.insert(-1, "The end!")
 		>>> data
 		[1, 2, 'Hi', 3, 'purple', 3, 'red', 'The end!', 4]
-		>>> 
+			- You can use append() if you want to append at the end.
 
 
 - Lists methods : Clear, Pop, Remove
@@ -151,7 +167,7 @@
 		>>> names.count("colt")
 		2
 		>>> names.count("selena")
-				1
+		1
 
 	- sort : It sorts elements, it modifies the lists.
 		>>> names
@@ -187,6 +203,10 @@
 
 - Slices :
 	
+	- Make new lists using slices of the old list!, Helps to make copies of the portion of the lists.
+
+		some_list[start:end:step]
+
 	- It slices the Lists elements. For slices we specify 3 peices of information.
 
 		some_list[start:end:step], start and end are the INDEXES.
@@ -208,7 +228,7 @@
 			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 			>>> 
 			>>> colors2 is colors
-			False
+			False		# Since it makes copies
 			>>> 
 			>>> colors[-2:]
 			['indigo', 'violet']
@@ -218,23 +238,12 @@
 
 			>>> colors
 			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
-			>>> 
-			>>> colors[2:]
-			['yellow', 'green', 'blue', 'indigo', 'violet']
-			>>> 
-			>>> colors[0:]
-			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
-			>>> 
-			>>> colors2 = colors[:]
-			>>> 
-			>>> colors2
-			['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
-			>>> 
-			>>> colors2 is colors
-			False
-			>>> 
-			>>> colors[-2:]
-			['indigo', 'violet']
+			>>> colors[:5]
+			['red', 'orange', 'yellow', 'green', 'blue']
+			>>> colors[2:4]
+			['yellow', 'green']
+			>>>
+
 
 
     - With first/second/step value.
@@ -266,3 +275,18 @@
 			>>> names[0], names[1] = names[1], names[0]
 			>>> names
 			['chimbu', 'sachin']
+
+	- Tricks with Slices
+
+		>>> string = "This is fun!"
+		>>>
+		>>> string[::-1]
+		'!nuf si sihT'
+		>>>
+
+		>>> colors
+		['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+		>>> colors[1][::-1]
+		'egnaro'
+
+

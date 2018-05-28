@@ -1,0 +1,25 @@
+1) Given two lists [1,2,3,4] and [3,4,5,6], create a variable called "answer" which is a new list that is the intersection of the two.
+Your output should be [2,4]
+
+>>> answer = [val for val in [1,2,3,4] if val in [3,4,5,6]]
+>>> answer
+[3, 4]
+
+
+2) Given a list of words ["Elie", "Tim", "Matt"] create a variable called "asnwer2" which is a new list with each word reversed.
+Your output should be ['eile', 'mit', 'ttam']
+
+>>> answer2 = [val[::-1].lower() for val in ["Elie", "Tim", "Matt"]]
+>>> answer2
+['eile', 'mit', 'ttam']
+
+
+3) For all the numbers between 1 and 100(including 100), create a variable called answer, which contains a list with all the numbers
+that are divisible by 12. [12, 24, 36]
+>>> answer =  [num for num in list(range(1,101)) if num % 12 == 0]
+
+4) String not containing vowels.
+>>> answer = [letter for letter in "amazing" if letter not in "aeiou"]
+>>> answer
+['m', 'z', 'n', 'g']
+
