@@ -25,7 +25,7 @@
 			<lambda>
 			>>>
 			
-		- When to use lambda : When you have to some code where you have to pass the function as a parameter where that function is never used again.
+		- When to use lambda : When you have some code where you have to pass the function as a parameter where that function is never used again.
 		
 		- Example :
 
@@ -40,11 +40,11 @@
 
 								
 								
-###### 2 : MAP - BIF
+###### 2 : MAP - BIF(built in function)
 
-		- A standard function that accepts at least 2 arguments, a function and an "iterable".
+		- A standard built-in function called "map" that accepts at least 2 arguments, a function and an "iterable".
 			- iterable : something that can be iterated over (lists, strings, dictionaries, sets, tuples)
-		- It maps a function to each elements of a iterable.
+			- It maps a function to each elements of a iterable.
 			
 		- Run the lambda for each value in the iterable and returns a map object which can be converted into another data structure.
 		
