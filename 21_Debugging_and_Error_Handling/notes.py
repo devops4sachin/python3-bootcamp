@@ -2,6 +2,7 @@
 
 ###### 2 : Common types of errors
 
+		- S N T I V K A
 		- SyntaxError : Occurs when Python encounters incorrect syntax (something it doesn't parse).
 				
 				>>> def first: # SyntaxError
