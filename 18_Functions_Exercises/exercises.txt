@@ -1,0 +1,33 @@
+1) Check if string is palindrome.
+
+def is_palindrome(string):
+    return string == string[::-1]
+
+def is_palindrome(string):
+    stripped = string.replace(" ", "")
+    return stripped == stripped[::-1]
+
+def is_palindrome(string):
+    string=''.join(string.split())
+    isPalindrome = True
+    for index in range(len(string)):
+        lastval = len(string)-index
+        if string[index] != string[lastval]
+            isPalindrome = False
+    return isPalindrome:
+
+
+
+2) Function to return the intersection.
+
+intersection([1,2,3],[2,3,4])                   #[2,3]
+intersection(['a','b','z'], ['x','y','z'])      #['z']
+
+# flesh out intersection pleaseeeee
+def intersection(list1, list2):
+    return [item for item in list1 if item in list2]
+
+OR
+
+def intersection(list1, list2):
+    return [val for val in set(list1) & set(list2)]

@@ -4,7 +4,7 @@
 ###### 1 : Introduction and *args
 	
 	- *args : A special operator we can pass to functions. 
-		- Gathers remaining arguments as a tuple.
+		- Gathers remaining arguments as a tuple after *.
 		
 	- *args returns a tuple.
 		>>> def sum_all_nums(*args):
@@ -17,14 +17,14 @@
 		>>>
 
 	- How to traverse the *args.
-		>>> def sum_all_nums(*args):
-		...     print(args)
-		...
-		>>> sum_all_nums(4,6,9,4,10)
-		(4, 6, 9, 4, 10)
-		>>> sum_all_nums(4,6)
-		(4, 6)
-		>>>
+		>>> def sum_all_nums(num, *args):
+			total = 0
+			for num in args:
+				total += num
+			return total
+		
+		>>> print(sum_all_nums(2,5,2))		# Here first num 2 will be assigned to "num".
+		>>> 7
 
 	- We can also pass our individual arguments along with the *args.
 		>>> def sum_all_nums(*args):
