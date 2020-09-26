@@ -1,0 +1,223 @@
+
+	- Two main types of numbers:
+		Integer : 4, -10
+		Floating Point : 6.1, 0.0, 1.3333
+
+
+####### Variables and Strings
+
+		x = 100
+		khaleesi_mother_of_dragons = 1
+		print(khaleesi_mother_of_dragons + x)
+		101
+
+		all, at, once = 5, 10, 15
+
+
+		1. Most variables should be snake_case (underscores between words)
+
+		2. Most variables should be also be lowercase, with some exceptions:
+			- CAPITAL_SNAKE_CASE usually refers to constants (e.g. PI = 3.14)
+			- UpperCamelCase usually refers to a class (more on that later)
+
+		3. Variables that start and end with two underscores (called "dunder" for double underscore) are supposed to be private or left alone.
+			__no_touchy__
+
+
+		>>> is_active = True
+		>>> is_active
+		True
+		>>> game_over = False
+		>>> game_over
+		False
+		>>> game_over = true
+		Traceback (most recent call last):
+		File "<stdin>", line 1, in <module>
+		NameError: name 'true' is not defined
+
+
+- Python is highly flexible about reassigning variables to different types:
+	awesomeness = True
+	print(awesomeness) # True
+	awesomeness = "a dog"
+	print(awesomeness) # a dog
+	awesomeness = None
+	print(awesomeness) # None, means NULL in python
+
+Special Value "None", means NULL
+
+		>>> None
+		>>> none
+		Traceback (most recent call last):
+		File "<stdin>", line 1, in <module>
+		NameError: name 'none' is not defined
+
+
+		- String literals in Python can be declared with either single or double quotes.
+			my_other_str = 'a hat'
+			my_str = "a cat"
+		- Either one is perfectly fine; but make sure you stick to the same convention throughout the same file.
+
+		new_line = "hello \n world"
+		print(new_line)
+		# hello
+		# world
+
+		str_one = "your"
+		str_two = "face"
+		str_three = str_one + " " + str_two  # your face
+
+		>>> username = "bluethecat"
+		>>> print("Hello there and welcome to the game, : " + username)
+		Hello there and welcome to the game, : bluethecat
+
+        >>> 8 + "hello"
+        Traceback (most recent call last):
+            File "<stdin>", line 1, in <module>
+        TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+    ####### 10: Formatting Strings
+
+    	x = 10
+    	formatted = f"I've told you {x} times already!"
+
+    	x = 10
+		formatted = "I've told you {} times already!".format(x)
+
+        >>> number = 10
+        >>> print("Your number is" + number + "which is int")
+        Traceback (most recent call last):
+        File "<stdin>", line 1, in <module>
+        TypeError: must be str, not int
+        >>>
+        >>> print(f"Your number is {number} which is int")
+        Your number is 10 which is int
+
+    --- String Interpolation
+
+    >>> fruit = "banana"
+    >>> ripeness = "unripe"
+    >>> print("The {} is {}".format(fruit,ripeness))
+    The banana is unripe
+
+    - for 3.6+ this works,
+    >>> print(f"The {fruit} is {ripeness}")
+    The banana is unripe
+
+    --- String Indexes
+
+    >>> "lol"[0]
+    'l'
+    >>> name = "Chuck"
+    >>> name[0]
+    'C'
+    >>> answer = "yessir"
+    >>> answer[0]
+    'y'
+    >>> answer[-1]
+    'r'
+
+    --- Converting Data Types
+
+    >>> decimal = 12.563457
+    >>> integer = int(decimal)
+    >>> integer
+    12
+
+    >>> my_list = [1, 2, 3]
+    >>> my_list_as_a_string = str(my_list)
+    >>> my_list_as_a_string
+    '[1, 2, 3]'
+    >>> print(my_list_as_a_string)
+    [1, 2, 3]
+    >>>
+    >>>
+    >>> float(12)
+    12.0
+    >>> int(99.65)
+    99
+    >>> str(8)
+    '8'
+
+    $ cat mileage.py
+    print("How many kilometers did you cycle today?")
+    kms = input()
+    miles = float(kms)/1.60934
+    miles = round(miles, 2)
+    print(f"Your {kms}km ride was {miles}mi ")
+
+
+######## Boolean and Conditional Logic
+
+    print("What's your favorite color?")
+    data = input()
+    print("You said " + data)
+
+    data = input("What's your favorite color?")
+    print("You said " + data)
+
+    color = input("What's your favorite color?")
+    if color == 'purple':
+    	print("excellent choice!")
+    elif color == 'teal':
+        print("not bad!")
+    elif color == 'seafoam':
+        print("mediocre")
+    elif color == 'pure darkness':
+        print("I like how you think")
+    else:
+    	print("YOU MONSTER!")
+
+
+    	age = input("How old are you: ")
+    if age:
+    	age = int(age)
+    	if age >= 18 and age < 21:
+    		print("You can enter, but need a wristband!")
+    	elif age >= 21:
+    	    print("You are good to enter and can drink!")
+    	else:
+    		print("You can't come in, little one! :(")
+    else:
+    	print("Please enter an age!")
+
+
+###### Looping in Python
+
+for letter in "coffee":
+	print(letter*10)
+
+
+times = input("How many times do I have to tell you? ")
+times = int(times)
+# Version 2
+for time in range(times):
+	print(f"time {time+1}:CLEAN UP YOUR ROOM")
+
+
+# Slight Refactor
+for num in range(1,21):
+	if num == 4 or num == 13:
+		state = "unlucky"
+	elif num % 2 == 0:
+		state = "even"
+	else:
+		state = "odd"
+	print(f"{num} is {state}")
+
+
+# Continues to ask for user input until the user types 'bananas'
+msg = input("whats the secret password?")
+while msg != "bananas":
+	print("WRONG!")
+	msg = input("whats the secret password?")
+print("CORRECT!")
+
+# break statement
+times = int(input("How many times do I have to tell you? "))
+
+for time in range(times):
+	print("CLEAN UP YOUR ROOM!")
+	if time >= 3:
+		print("do you even listen anymore?")
+		break
