@@ -25,7 +25,8 @@
 			<lambda>
 			>>>
 			
-		- When to use lambda : When you have some code where you have to pass the function as a parameter where that function is never used again.
+		- When to use lambda : When you have some code where you have to pass the function as a parameter where that function
+		is never used again.
 		
 		- Example :
 

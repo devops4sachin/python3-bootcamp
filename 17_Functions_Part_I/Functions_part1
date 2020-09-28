@@ -148,7 +148,8 @@
 		- Variables defined/created in functions are scoped in that function.
 		- But we can access the variables defined inside the function outside the scope of that function by returing those variables.
 		
-		- global : Variable not defined in a function is a global variable. we cannot directly access the global variables inside the function.
+		- global : Variable not defined in a function is a global variable. we cannot directly access the global variables
+		inside the function.
 		
 			>>> total = 0
 			>>> def increment():
@@ -185,20 +186,29 @@
 			...
 			>>> increment()
 			1
+			>>> increment()
+			2
+
+			- "nonlocal" : This is basically used in a nested functions.
+			The nonlocal keyword is used to work with variables inside nested functions, where the variable should not
+			belong to the inner function.
+
+                Use the keyword nonlocal to declare that the variable is not local to the inner function.
 			
-			
-			- "nonlocal" : This keyword is used to access the non-global parent function.
-			
-			>>> def outer():
-			...     count = 0
-			...     def inner():
-			...             nonlocal count
-			...             count += 1
-			...             return count
-			...     return inner()
-			...
-			>>> outer()
-			1
+            >>> def myfunc():
+            ...     name = "outer variable"
+            ...     def innerfunc():
+            ...         nonlocal name
+            ...         name = "still outer variable"
+            ...         return name
+            ...     innerfunc()
+            ...     return name
+            ...
+            >>> value = myfunc()
+            >>> print(value)
+            still outer variable
+
+
 			
 			
 			

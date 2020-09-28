@@ -53,7 +53,7 @@ TypeError: 'tuple' object does not support item assignment
 	>>> 
 
 
-- Tuple is written as a Dictionary items.
+- Dictionary items are written as Tuples.
 
 	>>> cat = {"name": "biscuit", "age": "0.5", "favourite_toy": "my chapstick"}
 	>>> type(cat)

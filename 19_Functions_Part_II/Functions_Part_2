@@ -3,7 +3,9 @@
 
 ###### 1 : Introduction and *args
 	
-	- *args : A special operator we can pass to functions. 
+	- *args : If you do not know how many arguments that will be passed into your function.
+	        Add a * before the parameter name in the function definition.
+            This way the function will receive a tuple of arguments, and can access the items accordingly:
 		- Gathers remaining arguments as a tuple after *.
 		
 	- *args returns a tuple.
@@ -17,25 +19,26 @@
 		>>>
 
 	- How to traverse the *args.
-		>>> def sum_all_nums(num, *args):
+
+        >>> def sum_of_all_nums(*args):
+        ...     total = 0
+        ...     for num in args:
+        ...         total += num
+        ...     return total
+        ...
+        >>> sum_of_all_nums(1,2,3,4,5,6)
+        21
+
+	- We can also pass our individual arguments along with the *args.
+		>>> def sum_all_nums(num1, *args):
 			total = 0
 			for num in args:
 				total += num
 			return total
 		
-		>>> print(sum_all_nums(2,5,2))		# Here first num 2 will be assigned to "num".
+		>>> print(sum_all_nums(10,5,2))		# Here first num 10 will be assigned to "num1".
 		>>> 7
 
-	- We can also pass our individual arguments along with the *args.
-		>>> def sum_all_nums(*args):
-		...     print(args)
-		...
-		>>> sum_all_nums(4,6,9,4,10)
-		(4, 6, 9, 4, 10)
-		>>> sum_all_nums(4,6)
-		(4, 6)
-		>>>
-		
 		
 ###### 2 : **kwargs (keyword args)
 
@@ -88,16 +91,16 @@
 		
 	- Example :
 	
->>> def display_info(a, b, *args, instructor="Sachin", **kwargs):
-	return [a, b, args, instructor, kwargs]
+>>> def display_info(a,b,*args, sachin="orange", **kwargs):
+...     return [a,b,args,sachin,kwargs]
+...
+>>> display_info(2,3,4,5,6, sachin="orange", aradhana="red", pinchu="pink")
+[2, 3, (4, 5, 6), 'orange', {'aradhana': 'red', 'pinchu': 'pink'}]
 
->>> print(display_info(1, 2, 3, last_name="Kesarkar", job = "Instructor"))
-[1, 2, (3,), 'Sachin', {'last_name': 'Kesarkar', 'job': 'Instructor'}]
-
-	parameters - 1, 2
-	*args - (3,) - It puts extra comma to identify it as a tuple.
+	parameters - 2, 3
+	*args - (4,5,6) - It puts extra comma to identify it as a tuple.
 	default parameters - instructor="Sachin"
-	kwargs - {'last_name':'Kesarkar', 'job':'Instructor'}
+	kwargs - {'aradhana': 'red', 'pinchu': 'pink'}
 	
 	
 	
