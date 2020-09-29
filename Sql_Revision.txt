@@ -1,0 +1,120 @@
+Reference : https://www.w3schools.com/sql/sql_union.asp
+
+###### Multiple insert into statement :
+
+            INSERT INTO table_name (column_list)
+            VALUES
+                (value_list_1),
+                (value_list_2),
+                ...
+                (value_list_n);
+
+
+
+###### Orderby :
+
+- The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+
+            SELECT * FROM Customers
+            ORDER BY Country;
+            
+            SELECT * FROM Customers
+            ORDER BY Country DESC;
+            
+            SELECT * FROM Customers
+            ORDER BY Country ASC, CustomerName DESC;
+
+
+###### Group by :
+
+- The GROUP BY statement is often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns.
+
+            SELECT COUNT(CustomerID), Country
+            FROM Customers
+            GROUP BY Country;
+
+            SELECT COUNT(CustomerID), Country
+            FROM Customers
+            GROUP BY Country
+            ORDER BY COUNT(CustomerID) DESC;
+
+
+###### Union :
+
+- The UNION operator is used to combine the result-set of two or more SELECT statements.
+
+Each SELECT statement within UNION must have the same number of columns
+The columns must also have similar data types
+The columns in each SELECT statement must also be in the same order
+
+            SELECT City FROM Customers
+            UNION
+            SELECT City FROM Suppliers
+            ORDER BY City;
+
+            SELECT City, Country FROM Customers
+            WHERE Country='Germany'
+            UNION
+            SELECT City, Country FROM Suppliers
+            WHERE Country='Germany'
+            ORDER BY City;
+
+
+
+###### Joins :
+
+Here are the different types of the JOINs in SQL:
+
+        - (INNER) JOIN: Returns records that have matching values in both tables
+        - LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+        - RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+        - FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
+    ###### Inner Join :
+
+    - (INNER) JOIN: Returns records that have matching values in both tables
+            SELECT column_name(s)
+            FROM table1
+            INNER JOIN table2
+            ON table1.column_name = table2.column_name;
+
+            SELECT Orders.OrderID, Customers.CustomerName
+            FROM Orders
+            INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+            - The INNER JOIN keyword selects all rows from both tables as long as there is a match between the columns. If there are records in the "Orders" table that do not have matches in "Customers", these orders will not be shown!
+
+
+    ###### Left Join (Left Outer Join) :
+
+    - LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+
+    Note: The LEFT JOIN keyword returns all records from the left table (Customers), even if there are no matches in the right table (Orders).
+
+            SELECT Customers.CustomerName, Orders.OrderID
+            FROM Customers
+            LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+            ORDER BY Customers.CustomerName;
+
+    ###### Right Join ( Right Outer Join) :
+
+    - The RIGHT JOIN keyword returns all records from the right table (table2), and the matched records from the left table (table1). The result is NULL from the left side, when there is no match.
+
+            SELECT column_name(s)
+            FROM table1
+            RIGHT JOIN table2
+            ON table1.column_name = table2.column_name;
+
+            SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+            FROM Orders
+            RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+            ORDER BY Orders.OrderID;
+
+    ##### Full Join :
+
+    - The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.
+
+            SELECT Customers.CustomerName, Orders.OrderID
+            FROM Customers
+            FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
+            ORDER BY Customers.CustomerName;

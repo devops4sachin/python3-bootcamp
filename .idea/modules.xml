@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Udemy_Python_The-Practical-Guide/.idea/Udemy_Python_The-Practical-Guide.iml" filepath="$PROJECT_DIR$/../Udemy_Python_The-Practical-Guide/.idea/Udemy_Python_The-Practical-Guide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../my_python_notes/.idea/my_python_notes.iml" filepath="$PROJECT_DIR$/../my_python_notes/.idea/my_python_notes.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/python3-bootcamp.iml" filepath="$PROJECT_DIR$/.idea/python3-bootcamp.iml" />
     </modules>
   </component>
